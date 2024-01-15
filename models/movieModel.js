@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let movieSchema = newSchema({
+let movieSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -10,7 +10,7 @@ let movieSchema = newSchema({
     type: String,
     required: true,
   },
-  genre: {
+  category: {
     type: String,
   },
   releaseDate: {
@@ -26,3 +26,5 @@ let movieSchema = newSchema({
     default: Date.now,
   },
 });
+
+module.exports = mongoose.model("Movie", movieSchema);
