@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const movieController = require("../controllers/movieController");
+const MovieController = require("../controllers/movieController");
 
 /**
  * @openapi
@@ -80,7 +80,7 @@ const movieController = require("../controllers/movieController");
  */
 router
   .route("/movie")
-  .post(movieController.createMovie)
-  .get(movieController.getAllMovies);
+  .post(MovieController.createMovie)
+  .get(MovieController.getAllMovies);
 
 module.exports = router;
