@@ -1,5 +1,6 @@
 const MovieModel = require("../models/movieModel");
 const CategoryModel = require("../models/categoryModel");
+
 class MovieController {
   async createMovie(req, res) {
     try {
