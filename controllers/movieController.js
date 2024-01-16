@@ -4,7 +4,6 @@ const MovieFactory = require("../classes/movies.js");
 const xml2js = require("xml2js");
 const AdapterClass = require("../classes/adapter.js");
 
-
 class MovieController {
   async createMovie(req, res) {
     try {
@@ -37,38 +36,6 @@ class MovieController {
       res.status(200).send(movies);
     } catch (err) {
       res.status(400).send({ message: err.message });
-    }
-  }
-
-  async createMovieXML(req, res) {
-    try {
-      const parser = new xml2js.Parser({ explicitArray: false });
-      parser.parseString(req.body, async (err, result) => {
-        if (err) {
-          res.status(400).json({ message: err.message });
-        } else {
-          const category = await CategoryModel.findById(
-            result.movie.category_id
-          );
-          if (!category) {
-            return res.status(404).send({ message: "Category not found" });
-          }
-
-          const movieData = {
-            title: result.movie.title,
-            director: result.movie.director,
-            category_id: category._id,
-            releaseDate: result.movie.releaseDate,
-          };
-
-          const movie = MovieFactory.createMovies(movieData);
-
-          const newMovie = await movie.save();
-          res.status(201).json(newMovie);
-        }
-      });
-    } catch (err) {
-      res.status(400).json({ message: err.message });
     }
   }
 
