@@ -10,8 +10,9 @@ let movieSchema = new Schema({
     type: String,
     required: true,
   },
-  category: {
-    type: String,
+  category_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "CategoryModel",
   },
   releaseDate: {
     type: Date,
