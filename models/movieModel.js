@@ -12,7 +12,7 @@ let movieSchema = new Schema({
   },
   category_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "CategoryModel",
+    ref: "Category",
   },
   releaseDate: {
     type: Date,

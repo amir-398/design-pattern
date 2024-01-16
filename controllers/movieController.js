@@ -1,5 +1,8 @@
 const MovieModel = require("../models/movieModel");
 const CategoryModel = require("../models/categoryModel");
+const MovieFactory = require("../classes/movies.js");
+const xml2js = require("xml2js");
+
 class MovieController {
   async createMovie(req, res) {
     try {
@@ -9,12 +12,14 @@ class MovieController {
         return res.status(404).json({ message: "Category not found" });
       }
 
-      const movie = new MovieModel({
+      const movieData = {
         title: req.body.title,
         director: req.body.director,
-        category_id: category._id, // Utilisez l'ID de la catégorie existante
+        category_id: category._id,
         releaseDate: req.body.releaseDate,
-      });
+      };
+
+      const movie = MovieFactory.createMovies(movieData);
 
       const newMovie = await movie.save();
       res.status(201).json(newMovie);
@@ -26,7 +31,39 @@ class MovieController {
   async getAllMovies(req, res) {
     try {
       const movies = await MovieModel.find().populate("category_id");
-      res.status(200).json(movies);
+      res.status(200).send(movies);
+    } catch (err) {
+      res.status(400).send({ message: err.message });
+    }
+  }
+
+  async createMovieXML(req, res) {
+    try {
+      const parser = new xml2js.Parser({ explicitArray: false });
+      parser.parseString(req.body, async (err, result) => {
+        if (err) {
+          res.status(400).json({ message: err.message });
+        } else {
+          const category = await CategoryModel.findById(
+            result.movie.category_id
+          );
+          if (!category) {
+            return res.status(404).send({ message: "Category not found" });
+          }
+
+          const movieData = {
+            title: result.movie.title,
+            director: result.movie.director,
+            category_id: category._id,
+            releaseDate: result.movie.releaseDate,
+          };
+
+          const movie = MovieFactory.createMovies(movieData);
+
+          const newMovie = await movie.save();
+          res.status(201).json(newMovie);
+        }
+      });
     } catch (err) {
       res.status(400).json({ message: err.message });
     }

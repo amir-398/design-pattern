@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const MovieController = require("../controllers/movieController");
 const CategoryController = require("../controllers/categoryController");
+const Adapter = require('../classes/adapterXML');
+const adapter = new Adapter();
+const Movie = require('../models/movieModel');
 
 /**
  * @openapi
@@ -83,6 +86,16 @@ router
   .route("/movie")
   .post(MovieController.createMovie)
   .get(MovieController.getAllMovies);
+
+router.get('/', async (req, res) => {
+  const movies = await Movie.find();
+const xml = adapter.jsonToXml(movies);
+res.set('Content-Type', 'text/xml');
+res.send(xml);
+});
+
+
+
 
 router
   .route("/category")
