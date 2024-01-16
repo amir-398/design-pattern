@@ -1,16 +1,10 @@
-class Movie {
-  constructor(title, director, category, releaseDate) {
-    this.title = title;
-    this.director = director;
-    this.category = category; // Ici, 'category' est un objet Category
-    this.releaseDate = releaseDate;
-  }
+const MovieModel = require("../models/movieModel.js");
 
-  getOverview() {
-    return `${this.title}, a ${this.category.name} film directed by ${this.director}, released in ${this.releaseDate}`;
-  }
-
-  static create({ title, director, category, releaseDate }) {
-    return new Movie(title, director, new Category(category), releaseDate);
+class MovieFactory {
+  static createMovie(data) {
+    const { title, director, category, releaseDate } = data;
+    return new MovieModel({ title, director, category, releaseDate });
   }
 }
+
+module.exports = MovieFactory;
