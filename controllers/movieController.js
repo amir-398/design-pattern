@@ -6,7 +6,7 @@ class MovieController {
       const movie = new MovieModel({
         title: req.body.title,
         director: req.body.director,
-        category: req.body.category,
+        category_id: req.body.category,
         releaseDate: req.body.releaseDate,
       });
       const newMovie = await movie.save();
