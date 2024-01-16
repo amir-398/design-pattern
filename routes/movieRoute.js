@@ -94,9 +94,13 @@ router
   .route("/movies/amazonprime")
   .get((req, res) => Movie.getAmazonPrimeMovies(req, res));
 
-// router
-//   .route("/category")
-//   .post(CategoryController.createCategory)
-//   .get(CategoryController.getAllCategories);
+router
+  .route("/movies/filter")
+  .get((req, res) => Movie.getMoviesByCategoryAndPlatform(req, res));
+
+router
+  .route("/category")
+  .post(CategoryController.createCategory)
+  .get(CategoryController.getAllCategories);
 
 module.exports = router;
