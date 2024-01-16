@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Movie = require("../classes/movie");
 const CategoryController = require("../controllers/categoryController");
+const Adapter = require('../classes/adapterXML');
+const adapter = new Adapter();
 // VOD
 
 /**
@@ -97,6 +99,11 @@ router
 router
   .route("/movies/filter")
   .get((req, res) => Movie.getMoviesByCategoryAndPlatform(req, res));
+
+  router
+  .route("/movieXML")
+  .post(adapter.postMovieXML)
+  .get(adapter.getMovieXML);
 
 router
   .route("/category")
