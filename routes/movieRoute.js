@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const MovieController = require("../controllers/movieController");
 const CategoryController = require("../controllers/categoryController");
+const AdapterClass = require("../classes/adapter.js");
 
 /**
  * @openapi
@@ -83,6 +84,22 @@ router
   .route("/movie")
   .post(MovieController.createMovie)
   .get(MovieController.getAllMovies);
+
+router.post("/movieXML", (req, res) => {
+  try {
+    // Translate JSON to your desired format
+    const translatedData = AdapterClass.translate(req.body);
+
+    // Convert translated data to XML
+    const xmlData = AdapterClass.convertToXML(translatedData);
+
+    // Send the XML data as response
+    res.set("Content-Type", "text/xml");
+    res.send(xmlData);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 router
   .route("/category")
