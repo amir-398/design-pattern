@@ -3,6 +3,10 @@ const router = express.Router();
 const MovieController = require("../controllers/movieController");
 const CategoryController = require("../controllers/categoryController");
 const AdapterClass = require("../classes/adapter.js");
+const Adapter = require('../classes/adapterXML');
+const adapter = new Adapter();
+const Movie = require('../models/movieModel');
+
 
 /**
  * @openapi
@@ -85,6 +89,7 @@ router
   .post(MovieController.createMovie)
   .get(MovieController.getAllMovies);
 
+
 router.post("/movieXML", (req, res) => {
   try {
     // Translate JSON to your desired format
@@ -100,6 +105,14 @@ router.post("/movieXML", (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
+router.get('/', async (req, res) => {
+  const movies = await Movie.find();
+const xml = adapter.jsonToXml(movies);
+res.set('Content-Type', 'text/xml');
+res.send(xml);
+});
+
 
 router
   .route("/category")
