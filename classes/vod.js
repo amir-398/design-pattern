@@ -43,7 +43,7 @@ class Film {
 // et implémentent la méthode movieData pour définir les propriétés spécifiques à chaque plateforme, comme la catégorie et le titre du film
 class FilmAmazon extends Film {
   movieData() {
-    return "{Résultat du FilmAmazon : catégorie = Action, titre = Mission Impossible}";
+    return "{Résultat du FilmAmazon : catégorie = Action, titre = Spider-Man 3}";
   }
 }
 
@@ -79,4 +79,4 @@ console.log("");
 console.log("App: Lancé avec DisneyPlus.");
 displayMovieData(new DisneyPlus());
 
-module.exports = displayMovieData();
+module.exports = { AmazonVideo, Netflix, DisneyPlus, displayMovieData };
