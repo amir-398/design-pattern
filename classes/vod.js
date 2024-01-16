@@ -41,3 +41,4 @@ class MovieFactory {
     }
   }
 }
+module.exports = MovieFactory;

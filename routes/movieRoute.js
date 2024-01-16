@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const MovieController = require("../classes/vod");
+const Movie = require("../classes/movie");
 const CategoryController = require("../controllers/categoryController");
+// VOD
 
 /**
  * @openapi
@@ -79,18 +80,21 @@ const CategoryController = require("../controllers/categoryController");
  *       500:
  *         description: Erreur serveur
  */
-router.route("/movies").post(MovieController.createMovie);
-router.route("/movies").get(MovieController.getAllMovies);
+
+
+router.route("/movies").post(Movie.createMovie);
+router.route("/movies").get(Movie.getAllMovies);
 
 router
   .route("/movies/netflix")
-  .get((req, res) => MovieController.getNetflixMovies(req, res));
+  .get((req, res) => Movie.getNetflixMovies(req, res));
 router
   .route("/movies/disneyplus")
-  .get((req, res) => MovieController.getDisneyPlusMovies(req, res));
-router
+  .get((req, res) => Movie.getDisneyPlusMovies(req, res));
+
   .route("/movies/amazonprime")
-  .get((req, res) => MovieController.getAmazonPrimeMovies(req, res));
+  .get((req, res) => Movie.getAmazonPrimeMovies(req, res));
+
 // router
 //   .route("/category")
 //   .post(CategoryController.createCategory)
