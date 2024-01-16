@@ -59,9 +59,9 @@ class FilmDisneyPlus extends Film {
   }
 }
 
-// La fonction clientCode prend en paramètre un objet de type VOD
+// La fonction displayMovieData prend en paramètre un objet de type VOD
 // et utilise sa méthode factoryMethod pour créer un objet de type Film
-function clientCode(vod) {
+function displayMovieData(vod) {
   console.log(
     "Client: Je ne connais pas la classe de VOD, mais ça marche quand même."
   );
@@ -69,12 +69,14 @@ function clientCode(vod) {
 }
 
 console.log("App: Lancé avec AmazonVideo.");
-clientCode(new AmazonVideo());
+displayMovieData(new AmazonVideo());
 console.log("");
 
 console.log("App: Lancé avec Netflix.");
-clientCode(new Netflix());
+displayMovieData(new Netflix());
 console.log("");
 
 console.log("App: Lancé avec DisneyPlus.");
-clientCode(new DisneyPlus());
+displayMovieData(new DisneyPlus());
+
+module.exports = displayMovieData();
