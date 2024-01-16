@@ -14,6 +14,9 @@ let movieSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "CategoryModel",
   },
+  platform: {
+    type: String,
+  },
   releaseDate: {
     type: Date,
     required: true,
