@@ -81,7 +81,6 @@ const CategoryController = require("../controllers/categoryController");
  *         description: Erreur serveur
  */
 
-
 router.route("/movies").post(Movie.createMovie);
 router.route("/movies").get(Movie.getAllMovies);
 
@@ -91,7 +90,7 @@ router
 router
   .route("/movies/disneyplus")
   .get((req, res) => Movie.getDisneyPlusMovies(req, res));
-
+router
   .route("/movies/amazonprime")
   .get((req, res) => Movie.getAmazonPrimeMovies(req, res));
 
