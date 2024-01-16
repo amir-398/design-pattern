@@ -1,59 +1,60 @@
 // La classe VOD définit la méthode factoryMethod qui doit être implémentée par les sous-classes
 class VOD {
-  factoryMethod() {
+  // Permet de créer un objet de type Film
+  factoryMethodCreationFilm() {
     throw new Error("Cette méthode doit être implémentée par les sous-classes");
   }
 
-  someOperation() {
-    const film = this.factoryMethod();
-    return `VOD: Le même code de VOD vient de fonctionner avec ${film.operation()}`;
+  //  crée un objet Film et retourne une chaîne de caractères.
+  moviesDataByVod() {
+    const film = this.factoryMethodCreationFilm();
+    return `VOD: Le même code de VOD vient de fonctionner avec ${film.movieData()}`;
   }
 }
 
 // Les classes AmazonVideo, Netflix et DisneyPlus héritent de la classe VOD
-// et implémentent la méthode factoryMethod pour retourner des objets de type Film correspondant à leur plateforme
+// et implémentent la méthode factoryMethodCreationFilm pour retourner des objets de type Film correspondant à leur plateforme
 class AmazonVideo extends VOD {
-  factoryMethod() {
+  factoryMethodCreationFilm() {
     return new FilmAmazon();
   }
 }
 
 class Netflix extends VOD {
-  factoryMethod() {
+  factoryMethodCreationFilm() {
     return new FilmNetflix();
   }
 }
 
 class DisneyPlus extends VOD {
-  factoryMethod() {
+  factoryMethodCreationFilm() {
     return new FilmDisneyPlus();
   }
 }
 
-// La classe Film définit la méthode operation qui doit être implémentée par les sous-classes
+// La classe Film définit la méthode movieData qui doit être implémentée par les sous-classes
 class Film {
-  operation() {
+  movieData() {
     throw new Error("Cette méthode doit être implémentée par les sous-classes");
   }
 }
 
 // Les classes FilmAmazon, FilmNetflix et FilmDisneyPlus héritent de la classe Film
-// et implémentent la méthode operation pour définir les propriétés spécifiques à chaque plateforme, comme la catégorie et le titre du film
+// et implémentent la méthode movieData pour définir les propriétés spécifiques à chaque plateforme, comme la catégorie et le titre du film
 class FilmAmazon extends Film {
-  operation() {
+  movieData() {
     return "{Résultat du FilmAmazon : catégorie = Action, titre = Mission Impossible}";
   }
 }
 
 class FilmNetflix extends Film {
-  operation() {
-    médi;
+  movieData() {
     return "{Résultat du FilmNetflix : catégorie = Coe, titre = The Office}";
   }
 }
 
 class FilmDisneyPlus extends Film {
-  operation() {
+  movieData() {
     return "{Résultat du FilmDisneyPlus : catégorie = Animation, titre = Frozen}";
   }
 }
@@ -64,7 +65,7 @@ function clientCode(vod) {
   console.log(
     "Client: Je ne connais pas la classe de VOD, mais ça marche quand même."
   );
-  console.log(vod.someOperation());
+  console.log(vod.moviesDataByVod());
 }
 
 console.log("App: Lancé avec AmazonVideo.");
