@@ -10,12 +10,6 @@ app.use(express.urlencoded());
 app.use(express.json());
 // Définition de la première route pour la racine de l'application
 
-const { AmazonVideo, Netflix, DisneyPlus } = require("./classes/vod");
-const Test = require("./classes/vod");
-Test.displayMovieData(new AmazonVideo());
-Test.displayMovieData(new Netflix());
-Test.displayMovieData(new DisneyPlus());
-
 app.use("/", movieRoute);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 // Démarrage du serveur Express et écoute sur le port spécifié
