@@ -1,7 +1,6 @@
 const CategoryModel = require("../models/categoryModel");
-const MovieController = require("../controllers/movieController");
 
-class CategoryController extends MovieController {
+class CategoryController {
   async createCategory(req, res) {
     try {
       const Category = new CategoryModel({

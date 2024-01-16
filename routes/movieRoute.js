@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const MovieController = require("../controllers/movieController");
+const CategoryController = require("../controllers/categoryController");
 
 /**
  * @openapi
@@ -82,5 +83,10 @@ router
   .route("/movie")
   .post(MovieController.createMovie)
   .get(MovieController.getAllMovies);
+
+router
+  .route("/category")
+  .post(CategoryController.createCategory)
+  .get(CategoryController.getAllCategories);
 
 module.exports = router;
