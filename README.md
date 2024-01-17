@@ -1,4 +1,4 @@
-# VOD Films Management API with Observer Pattern
+# VOD Movies Management API with Observer Pattern
 ![Static Badge](https://img.shields.io/badge/Group%3A_Peter_Gana_Amir_Remi-%23621a55%20)
 ![Static Badge](https://img.shields.io/badge/version-1.0.0-blue)
 ![Static Badge](https://img.shields.io/badge/node_js-language-green?logo=nodedotjs)
@@ -8,9 +8,9 @@ This Node.js API lets you manage a catalog of films with dynamic platform alloca
 
 ## Introduction 📄​
 
-The VOD Films Management API has been designed to facilitate the organization and monitoring of film distribution across various streaming platforms. It employs the observer pattern to notify users of platform changes for individual films.
+The VOD Movies Management API has been designed to facilitate the organization and monitoring of film distribution across various streaming platforms. It employs the observer pattern to notify users of platform changes for individual films.
 
-## What you can do with the VOD Films Management API 🔎​
+## What you can do with the VOD Movies Management API 🔎​
 
 Here are a few examples of how to use this API:
 

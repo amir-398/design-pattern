@@ -4,7 +4,7 @@ const swaggerOptions = {
   definition: {
     openapi: "3.1.0",
     info: {
-      title: "LogRocket Express API with Swagger",
+      title: "VOD Movies Management API",
       version: "0.1.0",
       description:
         "This is a simple CRUD API application made with Express and documented with Swagger",
@@ -13,7 +13,7 @@ const swaggerOptions = {
         url: "https://spdx.org/licenses/MIT.html",
       },
       contact: {
-        name: "AGPR",
+        name: "Peter Gana Amir Remi",
         email: "AGPR@gmail.fr",
       },
     },
