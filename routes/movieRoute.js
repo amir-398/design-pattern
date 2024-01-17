@@ -26,9 +26,4 @@ router
 
 router.route("/movieXML").post(adapter.postMovieXML).get(adapter.getMovieXML);
 
-router
-  .route("/category")
-  .post(CategoryController.createCategory)
-  .get(CategoryController.getAllCategories);
-
 module.exports = router;
