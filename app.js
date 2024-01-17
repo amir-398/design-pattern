@@ -8,8 +8,6 @@ const mongoose = require("mongoose");
 mongoose.connect("mongodb://127.0.0.1:27017/design_patern");
 app.use(express.urlencoded());
 app.use(express.json());
-// Définition de la première route pour la racine de l'application
-
 app.use("/", movieRoute);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 // Démarrage du serveur Express et écoute sur le port spécifié
