@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const { Subject, MoviePlatformObserver } = require("../classes/observer");
+
 const Schema = mongoose.Schema;
 
 let movieSchema = new Schema({
@@ -29,6 +31,19 @@ let movieSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+});
+// Créer une instance de Subject et enregistrer l'observateur
+const subject = new Subject();
+subject.subscribe(new MoviePlatformObserver());
+
+movieSchema.post("save", function (doc) {
+  doc._original = doc._original || {}; // Assurez-vous que _original est initialisé
+  subject.notify(doc);
+});
+
+movieSchema.post("findOneAndUpdate", function (doc) {
+  doc._original = doc._original || {}; // Assurez-vous que _original est initialisé
+  subject.notify(doc);
 });
 
 module.exports = mongoose.model("Movie", movieSchema);
