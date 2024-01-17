@@ -1,5 +1,5 @@
 # VOD Films Management API with Observer Pattern
-
+![Static Badge](https://img.shields.io/badge/Group%3A_Peter_Gana_Amir_Remi-%23621a55%20)
 ![Static Badge](https://img.shields.io/badge/version-1.0.0-blue)
 ![Static Badge](https://img.shields.io/badge/node_js-language-green?logo=nodedotjs)
 ![Static Badge](https://img.shields.io/badge/docs_api-swagger-orange?logo=swagger)
@@ -24,6 +24,7 @@ Here are a few examples of how to use this API:
 ## ​🔥​ Try the API (Swagger) 🔥​ ​🗂️​
 
 Swagger documentation will be available once the project is deployed, enabling you to interact with the API directly.
+`http://localhost:3000/api-docs/`
 
 ## ⚡​ Installation ​⚡​
 
